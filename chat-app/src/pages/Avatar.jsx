@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import loader from "../assets/loader.gif";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { setAvatarRoute } from "../utils/APIRoute";
+import { setAvatarRoute, apiAvatar } from "../utils/APIRoute";
 import { Buffer } from "buffer";
 
 const Avatar = () => {
-  const api = `https://api.multiavatar.com/4645646`;
   const navigate = useNavigate();
   const toastOptions = {
     position: "bottom-right",
@@ -41,11 +40,15 @@ const Avatar = () => {
     }
   };
 
+  useEffect(()=>{
+    if(!localStorage.getItem('chat-app-user')) navigate('/login')
+  }, [])
+  
   const imagesFun = async () => {
     const data = [];
     for (let i = 0; i < 4; i++) {
       const image = await axios.get(
-        `${api}/${Math.round(Math.random() * 1000)}`
+        `${apiAvatar}/${Math.round(Math.random() * 1000)}`
       );
       const buffer = new Buffer(image.data);
       data.push(buffer.toString("base64"));
