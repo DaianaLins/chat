@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { registerRoute } from "../utils/APIRoute";
 
@@ -23,6 +22,11 @@ const Register = () => {
     draggable: true,
     theme: "dark",
   };
+
+  useEffect(()=>{
+    if(localStorage.getItem('chat-app-user')) navigate('/')
+  }, [])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -103,7 +107,7 @@ const Register = () => {
               name="confirmPassword"
               onChange={(e) => handleChange(e)}
             />
-            <button type="submit">Criar usuário</button>
+            <button type="submit">Registar</button>
             <span>
               Ja tem uma conta? <Link to="/login">Login</Link>
             </span>
@@ -171,6 +175,7 @@ export const FormContainer = styled.div`
       cursor: pointer;
       border-radius: 0.4rem;
       font-size: 1rem;
+      width: 100%;
       text-transform: uppercase;
       transition: 0.5s ease-in-out;
       &:hover {
