@@ -16,17 +16,16 @@ const useSchema = new mongoose.Schema({
    password:{
         type: String,
         required: true,
-        min: 3,
-        max: 50,
+        min: 8,
     }, 
     isAvatarImageSet:{
         type: Boolean,
         default: false,
     },
-    // avatarImage:{
-    //     type: Boolean,
-    //     default: "",
-    // },
+    avatarImage:{
+        type: String,
+        default: "",
+    },
 })
 
 module.exports = mongoose.model("Users", useSchema);

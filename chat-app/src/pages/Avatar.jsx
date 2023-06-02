@@ -22,7 +22,24 @@ const Avatar = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
 
-  const setProfilePicture = async () => {};
+  const setProfilePicture = async () => {
+    if(selectedAvatar === undefined){
+      toast.error("Por favor selecione um avatar", toastOptions)
+    } else {
+      const user = await JSON.parse(localStorage.getItem("chat-app-user"));
+      const {data} = await axios.post(`${setAvatarRoute}/${user._id}`,{
+        image: avatars[selectedAvatar],
+      });
+      if(data.isSet){
+        user.isAvatarImageSet = true;
+        user.avatarImage = data.image;
+        localStorage.setItem("chat-app-user", JSON.stringify(user));
+        navigate('/')
+      } else {
+        toast.error("Erro ao definir avatar. Por favor tente novamente", toastOptions)
+      }
+    }
+  };
 
   const imagesFun = async () => {
     const data = [];
@@ -70,7 +87,7 @@ const Avatar = () => {
             })}
           </div>
           <button onClick={setProfilePicture} className="submit-btn">
-            Set as Profile Picture
+            Selecione um avatar
           </button>
         </Container>
       )}
