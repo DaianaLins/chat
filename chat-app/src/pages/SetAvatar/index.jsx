@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import {Container} from './styles'
 import { useNavigate } from "react-router-dom";
-import loader from "../assets/loader.gif";
+import loader from "../../assets/loader.gif";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { setAvatarRoute, apiAvatar } from "../utils/APIRoute";
+import { setAvatarRoute, apiAvatar } from "../../utils/APIRoute";
 import { Buffer } from "buffer";
 
 const Avatar = () => {
@@ -99,58 +99,6 @@ const Avatar = () => {
   );
 };
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 3rem;
-  background-color: #131324;
-  height: 100vh;
-  width: 100vw;
-  .loader {
-    max-inline-size: 100%;
-  }
-  .title-container {
-    h1 {
-      color: white;
-    }
-  }
-  .avatars {
-    display: flex;
-    gap: 2rem;
 
-    .avatar {
-      border: 0.4rem solid transparent;
-      padding: 0.4rem;
-      border-radius: 5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: 0.5s ease-in-out;
-      img {
-        height: 6rem;
-        transition: 0.5s ease-in-out;
-      }
-    }
-    .selected {
-      border: 0.4rem solid #4e0eff;
-    }
-  }
-  .submit-btn {
-    background-color: #997af0;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0.4rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    &:hover {
-      background-color: #4e0eff;
-    }
-  }
-`;
 
 export default Avatar;
