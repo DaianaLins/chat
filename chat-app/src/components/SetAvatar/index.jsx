@@ -20,6 +20,7 @@ const Avatar = () => {
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
+  console.log(selectedAvatar)
 
   const setProfilePicture = async () => {
     if(selectedAvatar === undefined){
@@ -32,7 +33,7 @@ const Avatar = () => {
       if(data.isSet){
         user.isAvatarImageSet = true;
         user.avatarImage = data.image;
-        localStorage.setItem("chat-app-user", JSON.stringify(user));
+        await localStorage.setItem("chat-app-user", JSON.stringify(user));
         navigate('/')
       } else {
         toast.error("Erro ao definir avatar. Por favor tente novamente", toastOptions)
@@ -83,6 +84,7 @@ const Avatar = () => {
                   <img
                     src={`data:image/svg+xml;base64,${avatar}`}
                     alt="avatar"
+                    key={avatar}
                     onClick={() => setSelectedAvatar(index)}
                   />
                 </div>

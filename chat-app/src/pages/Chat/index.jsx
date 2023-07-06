@@ -7,6 +7,7 @@ import Contact from "../../components/Contact";
 import Welcome from "../../components/Welcome";
 import ChatContainer from "../../components/ChatContainer";
 import {io} from "socket.io-client"
+import Logout from '../../components/Logout'
 
 const Chat = () => {
   const socket = useRef();
@@ -52,8 +53,11 @@ const Chat = () => {
     setCurrentChat(chat);
   };
 
-  return (
+  return (  
     <Container>
+      <div className="header" >
+      <Logout />
+      </div>
       <div className="container">
         <Contact
           contacts={contacts}

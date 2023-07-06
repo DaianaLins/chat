@@ -12,6 +12,14 @@ gap: 1rem;
 align-items: center;
 background-color: #131324;
 
+.header{
+  width: 100%;
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+  padding-right: 50px;
+}
+
 .container {
   height: 85vh;
   width: 85vw;

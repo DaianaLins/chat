@@ -17,9 +17,10 @@ const Contact = ({ contacts, currentUser, changeChat }) => {
     setCurrentSelected(index);
     changeChat(contact);
   };
+  // console.log(currentUserImage.avatarImage)
   return (
     <>
-      {currentUserImage && currentUserImage && (
+      {currentUserImage && !!currentUserImage  && (
         <Container>
           <div className="brand">
             <img src={Logo} alt="logo" />
@@ -51,7 +52,7 @@ const Contact = ({ contacts, currentUser, changeChat }) => {
           <div className="current-user">
             <div className="avatar">
               <img
-                src={`data:image/svg+xml;base64,${currentUserImage}`}
+                src={`data:image/svg+xml;base64,${currentUserImage?.avatarImage ? currentUserImage.avatarImage : currentUserImage}`}
                 alt="avatar"
               />
             </div>

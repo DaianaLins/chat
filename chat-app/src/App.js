@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Register from './pages/Register';
 import Login from './pages/Login'
 import Chat from './pages/Chat';
-import Avatar from './pages/SetAvatar';
 import "react-toastify/dist/ReactToastify.css";
+import SetAvatar from "./components/SetAvatar";
 
 
 // import { Container } from './styles';
@@ -15,7 +15,7 @@ const App = () => {
     <Routes>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/setAvatar" element={<Avatar />} />
+      <Route path="/setAvatar" element={<SetAvatar />} />
       <Route path="/" element={<Chat />} />
     </Routes>
   </BrowserRouter>
